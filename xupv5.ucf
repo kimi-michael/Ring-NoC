@@ -1,0 +1,101 @@
+#NET  CLK_27MHZ_FPGA       LOC="AG18";  # Bank 4, Vcco=3.3V, No DCI      
+#NET  CLK_33MHZ_FPGA       LOC="AH17";  # Bank 4, Vcco=3.3V, No DCI      
+#NET  CLK_FPGA_N           LOC="K19";   # Bank 3, Vcco=2.5V, No DCI      
+#NET  CLK_FPGA_P           LOC="L19";   # Bank 3, Vcco=2.5V, No DCI      
+
+# Bank 4, Vcco=3.3V, No DCI      
+NET "CLK" LOC = AH15; //100MHz clock
+
+
+#NET  FPGA_CPU_RESET_B     LOC="E9";    # Bank 20, Vcco=3.3V, DCI using 49.9 ohm 
+#NET  RST_N     LOC="E9";    # Bank 20, Vcco=3.3V, DCI using 49.9 ohm
+
+#NET  GPIO_LED_0           LOC="H18";   # Bank 3, Vcco=2.5V, No DCI
+#NET  GPIO_LED_1           LOC="L18";   # Bank 3, Vcco=2.5V, No DCI
+#NET  GPIO_LED_2           LOC="G15";   # Bank 3, Vcco=2.5V, No DCI
+#NET  GPIO_LED_3           LOC="AD26";  # Bank 21, Vcco=1.8V, DCI using 49.9 ohm resistors
+#NET  GPIO_LED_4           LOC="G16";   # Bank 3, Vcco=2.5V, No DCI
+#NET  GPIO_LED_5           LOC="AD25";  # Bank 21, Vcco=1.8V, DCI using 49.9 ohm resistors
+#NET  GPIO_LED_6           LOC="AD24";  # Bank 21, Vcco=1.8V, DCI using 49.9 ohm resistors
+#NET  GPIO_LED_7           LOC="AE24";  # Bank 21, Vcco=1.8V, DCI using 49.9 ohm resistors
+#NET  GPIO_LED_C           LOC="E8";    # Bank 20, Vcco=3.3V, DCI using 49.9 ohm resistors
+#NET  GPIO_LED_E           LOC="AG23";  # Bank 2, Vcco=3.3V
+#NET  GPIO_LED_N           LOC="AF13";  # Bank 2, Vcco=3.3V
+#NET  GPIO_LED_S           LOC="AG12";  # Bank 2, Vcco=3.3V
+#NET  GPIO_LED_W           LOC="AF23";  # Bank 2, Vcco=3.3V
+
+# Bank 3, Vcco=2.5V, No DCI
+# Bank 3, Vcco=2.5V, No DCI
+#NET "leds_pins_LED[1]" LOC = L18;
+# Bank 3, Vcco=2.5V, No DCI
+#NET "leds_pins_LED[2]" LOC = G15;
+# Bank 21, Vcco=1.8V, DCI using 49.9 ohm resistors
+#NET "leds_pins_LED[3]" LOC = AD26;
+# Bank 3, Vcco=2.5V, No DCI
+#NET "leds_pins_LED[4]" LOC = G16;
+# Bank 21, Vcco=1.8V, DCI using 49.9 ohm resistors
+#NET "leds_pins_LED[5]" LOC = AD25;
+# Bank 21, Vcco=1.8V, DCI using 49.9 ohm resistors
+#NET "leds_pins_LED[6]" LOC = AD24;
+# Bank 21, Vcco=1.8V, DCI using 49.9 ohm resistors
+#NET "leds_pins_LED[7]" LOC = AE24;
+# Bank 20, Vcco=3.3V, DCI using 49.9 ohm resistors
+#NET "leds_pins_LED[8]" LOC = E8;
+# Bank 2, Vcco=3.3V
+#NET "leds_pins_LED[9]" LOC = AG23;
+# Bank 2, Vcco=3.3V
+#NET "leds_pins_LED[10]" LOC = AF13;
+# Bank 2, Vcco=3.3V
+#NET "leds_pins_LED[11]" LOC = AG12;
+# Bank 2, Vcco=3.3V
+#NET "leds_pins_LED[12]" LOC = AF23;
+
+
+#NET  GPIO_SW_C            LOC="AJ6";   # Bank 18, Vcco=3.3V, No DCI
+#NET  GPIO_SW_E            LOC="AK7";   # Bank 18, Vcco=3.3V, No DCI
+#NET  GPIO_SW_N            LOC="U8";    # Bank 18, Vcco=3.3V, No DCI
+#NET  GPIO_SW_S            LOC="V8";    # Bank 18, Vcco=3.3V, No DCI
+#NET  GPIO_SW_W            LOC="AJ7";   # Bank 18, Vcco=3.3V, No DCI
+
+
+
+NET "RST_N" LOC = E9;
+#NET "leds_pins_LED[0]" LOC = H18;
+
+
+NET "CLK" IOSTANDARD = LVCMOS33;
+NET "RST_N" IOSTANDARD = LVCMOS33;
+#NET "leds_pins_LED[3]" IOSTANDARD = LVDCI_18;
+#NET "leds_pins_LED[4]" IOSTANDARD = LVCMOS25;
+#NET "leds_pins_LED[5]" IOSTANDARD = LVDCI_18;
+#NET "leds_pins_LED[6]" IOSTANDARD = LVDCI_18;
+#NET "leds_pins_LED[7]" IOSTANDARD = LVDCI_18;
+#NET "leds_pins_LED[8]" IOSTANDARD = LVDCI_33;
+#NET "leds_pins_LED[9]" IOSTANDARD = LVCMOS33;
+#NET "leds_pins_LED[10]" IOSTANDARD = LVCMOS33;
+#NET "leds_pins_LED[11]" IOSTANDARD = LVCMOS33;
+#NET "leds_pins_LED[12]" IOSTANDARD = LVCMOS33;
+NET "RST_N" PULLUP;
+
+
+#NET "RST_N" DRIVE = 12;
+#NET "RST_N" SLEW = SLOW;
+
+
+#NET "uart_pins_serial_tx" LOC = AG20;
+
+
+
+#NET "uart_pins_serial_tx" IOSTANDARD = LVCMOS33;
+
+
+#NET "uart_pins_serial_tx" DRIVE = 12;
+#NET "uart_pins_serial_tx" SLEW = SLOW;
+
+# PlanAhead Generated physical constraints 
+
+#NET "uart_pins_serial_rx" LOC = AG15;
+
+# PlanAhead Generated IO constraints 
+
+# NET "uart_pins_serial_rx" IOSTANDARD = LVCMOS33;

@@ -1,0 +1,100 @@
+[DEFAULT]
+default-targets:     dut_tb_ring
+bsc-compile-options: -aggressive-conditions -keep-fires -u
+bsc-link-options:    -keep-fires
+
+[common]
+hide-target
+bsv-source-directories:   .
+verilog-directory:        build_verilog
+binary-directory:         build_bin
+simulation-directory:     build_sim
+info-directory:           build_info
+altera-directory:         build_quartus
+xilinx-directory:         build_xilinx
+log-directory:            build_logs
+bsc-compile-options:      -sched-dot -show-schedule
+build-for:                bluesim
+
+[dut_tb_ring]
+extends-target:      common
+exe-file:            dut_tb_ring.bin
+top-module:          mkRingTestBench
+top-file:            ./TestBenchRing.bsv
+
+[dut_tb_ringnode]
+extends-target:      common
+exe-file:            dut_tb_ringnode.bin
+top-module:          mkRingNodeTestBench
+top-file:            ./TestBenchRingNode.bsv
+
+[dut_tb_f2p]
+extends-target:      common
+exe-file:            dut_tb_f2p.bin
+top-module:          mkF2PTestBench
+top-file:            ./TestBenchF2P.bsv
+
+[dut_tb_p2f]
+extends-target:      common
+exe-file:            dut_tb_p2f.bin
+top-module:          mkP2FTestBench
+top-file:            ./TestBenchP2F.bsv
+
+[dut_tb_vcfifo]
+extends-target:      common
+exe-file:            dut_tb_vcfifo.bin
+top-module:          mkVcFifoTestBench
+top-file:            ./TestBenchVcFifo.bsv
+
+[dut_tb_xbr]
+extends-target:      common
+exe-file:            dut_tb_xbr.bin
+top-module:          mkCrossBarTestBench
+top-file:            ./TestBenchXbr.bsv
+
+##########################
+# generate verilog code: #
+##########################
+
+[vlog_dut_ring]
+extends-target:    common
+build-for:         verilog
+top-module:        mkRingWith4Nodes_Synth
+top-file:	   RingForFpga.bsv
+
+[vlog_dut_tb_xbr]
+extends-target:    common
+build-for:         verilog
+top-module:        mkCrossBarTestBench
+top-file:	   TestBenchXbr.bsv
+
+[vlog_dut_tb_vcfifo]
+extends-target:    common
+build-for:         verilog
+top-module:        mkVcFifoTestBench
+top-file:	   TestBenchVcFifo.bsv
+
+[vlog_dut_tb_p2f]
+extends-target:    common
+build-for:         verilog
+top-module:        mkP2FTestBench
+top-file:	   TestBenchP2F.bsv
+
+[vlog_dut_tb_f2p]
+extends-target:    common
+build-for:         verilog
+top-module:        mkF2PTestBench
+top-file:	   TestBenchF2P.bsv
+
+##################
+# build for fpga #
+##################
+[fpga]
+top-module:         mkRingWith4Nodes_Synth
+extends-target:     common
+scemi-tb
+build-for:          xupv5
+xilinx-map-options: -detail -u
+exe-file:           tb
+xilinx-ucf-file:    ./xupv5.ucf
+top-file:           ./RingForFpga.bsv
